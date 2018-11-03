@@ -1,0 +1,16 @@
+{
+  "name": "api_foody-good",
+  "version": "0.0.1",
+  "description": "API para o sistema do FoodyGood",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Elvis Douglas Janegitz",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.5"
+  }
+}
