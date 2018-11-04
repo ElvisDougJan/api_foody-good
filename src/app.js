@@ -8,6 +8,7 @@ import rotaPedidos from './routes/Pedidos'
 import rotaItens from './routes/Item'
 import rotaInsumos from './routes/Insumos'
 import rotaProdutos from './routes/Produtos'
+import rotaInsumosProdutos from './routes/InsumoProduto'
 const app = express()
 
 app.use(cors())
@@ -21,5 +22,6 @@ rotaPedidos(app)
 rotaItens(app)
 rotaInsumos(app)
 rotaProdutos(app)
+rotaInsumosProdutos(app)
 
 export default app
