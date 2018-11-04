@@ -8,17 +8,17 @@ class FuncaoController {
 
   async consultaTodasFuncoes(res) {
     await Funcoes.find({}, (err, funcoesEncontradas) => {
-      err
-        ? res.status(404).json(`Erro ao consultar todos usuários. ERRO: ${err}`) && console.log(err)
+      err || !funcoesEncontradas
+        ? res.status(404).json(`Erro ao consultar todos usuários. A consulta retornou ${err}`) && console.log(err)
         : res.status(200).json(funcoesEncontradas)
     })
   }
 
   consultaFuncaoID(req, res) {
-    Funcoes.findOne({ _id: req.params._id }, (err, usuarioEncontrado) => {
-      err || !usuarioEncontrado
-        ? res.status(404).json(`Usuário não encontrado. ERRO ${err}`) && console.log(err)
-        : res.status(200).json(usuarioEncontrado)
+    Funcoes.findById(req.params._id, (err, funcaoEncontrada) => {
+      err || !funcaoEncontrada
+        ? res.status(404).json(`Usuário não encontrado. A consulta retornou ${err}`) && console.log(err)
+        : res.status(200).json(funcaoEncontrada)
     })
   }
 
@@ -31,16 +31,16 @@ class FuncaoController {
   }
 
   atualizaFuncao(req, res) {
-    Funcoes.updateOne({ _id: req.params._id }, req.body, (err, funcaoEncontrada) => {
+    Funcoes.findByIdAndUpdate(req.params._id, req.body, (err, funcaoEncontrada) => {
       err || !funcaoEncontrada
-        ? res.status(400).json(`Não foi possível atualizar esta função. ERRO: ${err}`) && console.log(err)
+        ? res.status(400).json(`Não foi possível atualizar esta função. A consulta retornou ${err}`) && console.log(err)
         : res.status(200).json('Função atualizada com sucesso!')
     })
   }
 
   deletaFuncaoID(req, res) {
-    Funcoes.deleteOne({ _id: req.params._id }, (err, funcaoEncontrada) => {
-      err || typeof funcaoEncontrada._id === undefined || !funcaoEncontrada._id
+    Funcoes.findByIdAndRemove(req.params._id, (err, funcao) => {
+      err || !funcao
         ? res.status(400).json(`Não foi possível deletar esta função. ERRO: O resultado da consulta de função retornou ${err}`)
         : res.status(200).json('Função deletada com sucesso!')
     })
