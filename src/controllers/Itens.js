@@ -7,19 +7,23 @@ class ItemController {
   }
 
   async consultaTodosItens(res) {
-    await Itens.find({}, (err, itensEncontrados) => {
-      err || !itensEncontrados
-        ? res.status(404).json(`Erro ao consultar todos itens. A consulta retornou ${err}`) && console.log(err)
-        : res.status(200).json(itensEncontrados)
-    })
+    await Itens.find({})
+      .populate('produtos')
+      .exec((err, itensEncontrados) => {
+        err || !itensEncontrados
+          ? res.status(404).json(`Erro ao consultar todos itens. A consulta retornou ${err}`) && console.log(err)
+          : res.status(200).json(itensEncontrados)
+      })
   }
 
   consultaItemID(req, res) {
-    Itens.findById(req.params._id, (err, itemEncontrado) => {
-      err || !itemEncontrado
-        ? res.status(404).json(`Item não encontrado. A consulta retornou ${err}`) && console.log(err)
-        : res.status(200).json(itemEncontrado)
-    })
+    Itens.findById(req.params._id)
+      .populate('produtos')
+      .exec((err, itemEncontrado) => {
+        err || !itemEncontrado
+          ? res.status(404).json(`Item não encontrado. A consulta retornou ${err}`) && console.log(err)
+          : res.status(200).json(itemEncontrado)
+      })
   }
 
   async salvaItem(req, res) {

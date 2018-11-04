@@ -5,6 +5,7 @@ module.exports = () => {
 
   const ItensSchema = new Schema({
     preco: { type: String },
+    produtos: { type: Schema.Types.ObjectId, ref: 'produtos' }
   }, {
       timestamps: {
         createdAt: 'criadoEm',
