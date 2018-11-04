@@ -4,7 +4,7 @@ module.exports = () => {
   const db = require('../config/connection')()
 
   const ItensSchema = new Schema({
-    preco: {type: String, default: ''},
+    preco: { type: String },
   }, {
       timestamps: {
         createdAt: 'criadoEm',

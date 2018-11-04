@@ -4,7 +4,7 @@ module.exports = () => {
   const db = require('../config/connection')()
 
   const FuncoesSchema = new Schema({
-    descricao: {type: String, default: ''},
+    descricao: { type: String },
   }, {
       timestamps: {
         createdAt: 'criadoEm',

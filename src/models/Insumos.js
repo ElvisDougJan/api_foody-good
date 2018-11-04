@@ -3,10 +3,11 @@ const Schema = require('mongoose').Schema
 module.exports = () => {
   const db = require('../config/connection')()
 
-  const PedidoSchema = new Schema({
-    numero_pedido: { type: String },
-    valor_total: { type: String },
-    forma_pagamento: { type: String }
+  const InsumosSchema = new Schema({
+    Estoque: { type: Number },
+    Unidade: { type: String },
+    Descricao: { type: String },
+    Preco: { type: String }
   }, {
       timestamps: {
         createdAt: 'criadoEm',
@@ -15,5 +16,5 @@ module.exports = () => {
       versionKey: false
     })
 
-  return db.models.pedidos || db.model('pedidos', PedidoSchema)
+  return db.models.insumos || db.model('insumos', InsumosSchema)
 }

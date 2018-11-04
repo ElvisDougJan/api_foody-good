@@ -4,19 +4,19 @@ module.exports = () => {
   const db = require('../config/connection')()
 
   const UsuarioSchema = new Schema({
-    nome: { type: String, default: '' },
-    cpf_cnpj: { type: String, default: '' },
-    tipo: { type: String, default: '' },
-    telefone: { type: String, default: '' },
-    senha: { type: String, default: '' },
+    nome: { type: String },
+    cpf_cnpj: { type: String },
+    tipo: { type: String },
+    telefone: { type: String },
+    senha: { type: String },
     endereco: {
-      rua: { type: String, default: '' },
-      numero: { type: String, default: '' },
-      complemento: { type: String, default: ''},
-      cidade: { type: String, default: '' },
-      estado: { type: String, default: '' },
-      pais: { type: String, default: '' },
-      cep: { type: String, default: '' }
+      rua: { type: String },
+      numero: { type: String },
+      complemento: { type: String },
+      cidade: { type: String },
+      estado: { type: String },
+      pais: { type: String },
+      cep: { type: String }
     }
   }, {
       timestamps: {
