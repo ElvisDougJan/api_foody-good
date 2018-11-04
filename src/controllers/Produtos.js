@@ -48,4 +48,4 @@ class ProdutosController {
 
 }
 
-module.exports = new ProdutosController()
+module.exports = new ProdutosController(Produtos)

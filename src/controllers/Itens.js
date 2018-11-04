@@ -48,4 +48,4 @@ class ItemController {
 
 }
 
-module.exports = new ItemController()
+module.exports = new ItemController(Itens)

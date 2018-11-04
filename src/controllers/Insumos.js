@@ -48,4 +48,4 @@ class InsumosController {
 
 }
 
-module.exports = new InsumosController()
+module.exports = new InsumosController(Insumos)

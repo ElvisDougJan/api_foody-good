@@ -48,4 +48,4 @@ class PedidoController {
 
 }
 
-module.exports = new PedidoController()
+module.exports = new PedidoController(Pedidos)

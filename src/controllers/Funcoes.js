@@ -48,4 +48,4 @@ class FuncaoController {
 
 }
 
-module.exports = new FuncaoController()
+module.exports = new FuncaoController(Funcoes)
