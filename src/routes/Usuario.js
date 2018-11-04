@@ -1,6 +1,6 @@
-const UsuarioController = require('./../controllers/Usuario')
+import UsuarioController from './../controllers/Usuario'
 
-module.exports = (app) => {
+export default (app) => {
   app.get('/usuarios', async (req, res) => {
     await UsuarioController.consultaTodosUsuarios(req, res)
   })

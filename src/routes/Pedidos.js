@@ -1,6 +1,6 @@
-const PedidosContoller = require('./../controllers/Pedidos')
+import PedidosContoller from './../controllers/Pedidos'
 
-module.exports = (app) => {
+export default (app) => {
   app.get('/pedidos', async (req, res) => {
     await PedidosContoller.consultaTodosPedidos(res)
   })

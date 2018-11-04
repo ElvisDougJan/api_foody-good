@@ -1,6 +1,6 @@
-const ItensController = require('./../controllers/Itens')
+import ItensController from './../controllers/Itens'
 
-module.exports = (app) => {
+export default (app) => {
   app.get('/itens', async (req, res) => {
     await ItensController.consultaTodosItens(res)
   })

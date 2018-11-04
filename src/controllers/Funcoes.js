@@ -1,4 +1,4 @@
-const Funcoes = require('../models/Funcao')()
+const Funcoes = require('../models/Funcoes')()
 
 class FuncaoController {
 

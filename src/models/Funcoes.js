@@ -3,8 +3,8 @@ const Schema = require('mongoose').Schema
 module.exports = () => {
   const db = require('../config/connection')()
 
-  const FuncaoSchema = new Schema({
-    descricao: { type: String, default: '' }
+  const FuncoesSchema = new Schema({
+    descricao: {type: String, default: ''},
   }, {
       timestamps: {
         createdAt: 'criadoEm',
@@ -13,5 +13,5 @@ module.exports = () => {
       versionKey: false
     })
 
-  return db.models.funcoes || db.model('funcoes', FuncaoSchema)
+  return db.models.funcoes || db.model('funcoes', FuncoesSchema)
 }

@@ -1,6 +1,6 @@
-const FuncoesController = require('./../controllers/Funcoes')
+import FuncoesController from './../controllers/Funcoes'
 
-module.exports = (app) => {
+export default (app) => {
   app.get('/funcoes', async (req, res) => {
     await FuncoesController.consultaTodasFuncoes(res)
   })
