@@ -7,19 +7,23 @@ class UsuarioController {
   }
 
   async consultaTodosUsuarios(req, res) {
-    await Usuario.find({}, (err, usuariosEncontrados) => {
-      err
-        ? res.status(404).json(`Erro ao consulta usuários. A consulta retornou ${err}`) && console.log(err)
-        : res.status(200).json(usuariosEncontrados)
-    })
+    await Usuario.find({})
+      .populate('funcoes')
+      .exec((err, usuariosEncontrados) => {
+        err
+          ? res.status(404).json(`Erro ao consulta usuários. A consulta retornou ${err}`) && console.log(err)
+          : res.status(200).json(usuariosEncontrados)
+      })
   }
 
   consultaUsuarioID(req, res) {
-    Usuario.findOne({ _id: req.params._id }, (err, usuarioEncontrado) => {
-      err || !usuarioEncontrado
-        ? res.status(404).json(`Usuário não encontrado. A consulta retornou ${err}`) && console.log(err)
-        : res.status(200).json(usuarioEncontrado)
-    })
+    Usuario.findOne({ _id: req.params._id })
+      .populate('funcoes')
+      .exec((err, usuarioEncontrado) => {
+        err || !usuarioEncontrado
+          ? res.status(404).json(`Usuário não encontrado. A consulta retornou ${err}`) && console.log(err)
+          : res.status(200).json(usuarioEncontrado)
+      })
   }
 
   salvaUsuario(req, res) {
