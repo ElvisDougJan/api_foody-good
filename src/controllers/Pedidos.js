@@ -7,19 +7,25 @@ class PedidoController {
   }
 
   async consultaTodosPedidos(res) {
-    await Pedidos.find({}, (err, PedidosEncontradas) => {
-      err
-        ? res.status(404).json(`Erro ao consultar todos usuários. A consulta retornou ${err}`) && console.log(err)
-        : res.status(200).json(PedidosEncontradas)
-    })
+    await Pedidos.find({})
+      .populate('funcionario')
+      .populate('mesas')
+      .exec((err, PedidosEncontradas) => {
+        err
+          ? res.status(404).json(`Erro ao consultar todos usuários. A consulta retornou ${err}`) && console.log(err)
+          : res.status(200).json(PedidosEncontradas)
+      })
   }
 
   consultaPedidoID(req, res) {
-    Pedidos.findById(req.params._id, (err, pedidoEncontrado) => {
-      err || !pedidoEncontrado
-        ? res.status(404).json(`Usuário não encontrado. A consulta retornou ${err}`) && console.log(err)
-        : res.status(200).json(pedidoEncontrado)
-    })
+    Pedidos.findById(req.params._id)
+      .populate('funcionario')
+      .populate('mesas')
+      .exec((err, pedidoEncontrado) => {
+        err || !pedidoEncontrado
+          ? res.status(404).json(`Usuário não encontrado. A consulta retornou ${err}`) && console.log(err)
+          : res.status(200).json(pedidoEncontrado)
+      })
   }
 
   async salvaPedido(req, res) {

@@ -6,7 +6,9 @@ module.exports = () => {
   const PedidoSchema = new Schema({
     numero_pedido: { type: String },
     valor_total: { type: String },
-    forma_pagamento: { type: String }
+    forma_pagamento: { type: String },
+    mesas: { type: Schema.Types.ObjectId, ref: 'mesas' },
+    funcionarios: { type: Schema.Types.ObjectId, ref: 'funcionarios' }
   }, {
       timestamps: {
         createdAt: 'criadoEm',
