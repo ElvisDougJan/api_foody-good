@@ -7,6 +7,7 @@ module.exports = () => {
     Preco: { type: String },
     Estoque: { type: Number },
     Descricao: { type: String },
+    Tipo: { type: String },
     Unidade: { type: String }
   }, {
       timestamps: {
