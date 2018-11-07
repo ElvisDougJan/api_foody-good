@@ -6,7 +6,7 @@ module.exports = () => {
   const UsuarioSchema = new Schema({
     nome: { type: String },
     cpf_cnpj: { type: String },
-    tipo: { type: String },
+    funcoes: { type: Schema.Types.ObjectId, ref: 'funcoes' },
     telefone: { type: String },
     senha: { type: String },
     endereco: {
