@@ -5,6 +5,11 @@ module.exports = () => {
 
   const MesasSchema = new Schema({
     numero: { type: Number },
+    pedidos: [{
+      numero_pedido: { type: String },
+      valor_total: { type: String },
+      forma_pagamento: { type: String },
+    }]
   }, {
       timestamps: {
         createdAt: 'criadoEm',

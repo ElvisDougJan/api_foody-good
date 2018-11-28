@@ -8,7 +8,7 @@ class PedidoController {
 
   async consultaTodosPedidos(res) {
     await Pedidos.find({})
-      .populate('funcionario')
+      .populate('usuarios')
       .populate('mesas')
       .exec((err, PedidosEncontradas) => {
         err
@@ -19,7 +19,7 @@ class PedidoController {
 
   consultaPedidoID(req, res) {
     Pedidos.findById(req.params._id)
-      .populate('funcionario')
+      .populate('usuarios')
       .populate('mesas')
       .exec((err, pedidoEncontrado) => {
         err || !pedidoEncontrado

@@ -30,13 +30,25 @@ class MesaController {
     })
   }
 
-  atualizaMesa(req, res) {
-    Mesas.findByIdAndUpdate(req.params._id, req.body, (err, mesaEncontradaParaAtualizar) => {
-      err || !mesaEncontradaParaAtualizar
-        ? res.status(400).json(`Não foi possível atualizar esta mesa. A consulta retornou ${err}`) && console.log(err)
-        : res.status(200).json('Mesa atualizada com sucesso!')
-    })
-  }
+  async atualizaMesa(req, res) {
+    console.log(req.body.pedidos)
+    let mesaAtualizada = {}
+    await Mesas.findById(req.params._id)
+      .then(mesa => {
+        console.log('mesa::: ', mesa)
+        mesaAtualizada = {
+          numero: req.body.numero,
+          pedidos: mesa.pedidos.push(req.body.pedidos)
+        }
+      })
+      .catch(err => console.log(`ERRO AO BUSCAR MESA: ${err}`))
+
+      console.log('mesaAtualizada: ', mesaAtualizada)
+
+    //   await Mesas.findByIdAndUpdate(req.params._id, mesaAtualizada)
+    //     .then(() => res.status(200).json('Mesa atualizada com sucesso!'))
+    //     .catch(err => res.status(400).json(`Não foi possível atualizar esta mesa. A consulta retornou ${err}`) && console.log(err))
+    }
 
   deletaMesaID(req, res) {
     Mesas.findByIdAndRemove(req.params._id, (err, mesaEncontradaParaRemover) => {

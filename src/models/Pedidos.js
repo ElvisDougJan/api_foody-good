@@ -8,7 +8,7 @@ module.exports = () => {
     valor_total: { type: String },
     forma_pagamento: { type: String },
     mesas: { type: Schema.Types.ObjectId, ref: 'mesas' },
-    funcionarios: { type: Schema.Types.ObjectId, ref: 'funcionarios' }
+    // usuarios: { type: Schema.Types.ObjectId, ref: 'usuarios' }
   }, {
       timestamps: {
         createdAt: 'criadoEm',

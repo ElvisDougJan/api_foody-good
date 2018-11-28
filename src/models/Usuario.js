@@ -9,6 +9,7 @@ module.exports = () => {
     funcoes: { type: Schema.Types.ObjectId, ref: 'funcoes' },
     telefone: { type: String },
     senha: { type: String },
+    username: { type: String },
     endereco: {
       rua: { type: String },
       numero: { type: String },
